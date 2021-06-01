@@ -13,12 +13,13 @@ async def on_command_error(ctx, error):
     await ctx.send(error_msg)
 
 
-@bot.command()
+@bot.event
 async def on_message(message):
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
     await message.channel.send('通知', tts=True)
+    await bot.process_commands(message)
 
 
 bot.run(token)
