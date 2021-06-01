@@ -12,6 +12,7 @@ if not discord.opus.is_loaded():
 @bot.command(aliases=["connect","summon"]) #connectやsummonでも呼び出せる
 async def join(ctx):
     """Botをボイスチャンネルに入室させます。"""
+    await ctx.send("Botをボイスチャンネルに入室させます。")
     voice_state = ctx.author.voice
 
     if (not voice_state) or (not voice_state.channel):
