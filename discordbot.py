@@ -14,8 +14,11 @@ async def on_command_error(ctx, error):
 
 
 @bot.command()
-async def message(ctx):
-    await ctx.send('pong', tts = True)
+async def on_message(message):
+    # メッセージ送信者がBotだった場合は無視する
+    if message.author.bot:
+        return
+    await message.channel.send('通知', tts=True)
 
 
 bot.run(token)
